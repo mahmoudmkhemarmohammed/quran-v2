@@ -44,9 +44,9 @@ const Item = ({
         <motion.h2
           className="bg-linear-to-r from-[#115a56] to-[#156d69] hover:bg-linear-to-r hover:from-[#479390] shadow-lg p-3 text-xl text-center rounded cursor-pointer flex justify-between items-center"
           key={data.id}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, filter: "blur(0px)" }}
+          exit={{ opacity: 0, filter: "blur(10px)" }}
           transition={{
             duration: 0.4,
             delay: typeof index === "number" ? index * 0.01 : 0,
@@ -73,9 +73,9 @@ const Item = ({
         </motion.h2>
       ) : (
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, filter: "blur(0px)" }}
+          exit={{ opacity: 0, filter: "blur(10px)" }}
           transition={{
             duration: 0.4,
             delay: typeof index === "number" ? index * 0.01 : 0,

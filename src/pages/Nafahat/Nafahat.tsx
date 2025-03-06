@@ -27,9 +27,9 @@ const Nafahat = () => {
               data={filterdData}
               renderItem={(data, index) => (
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
+                  initial={{ opacity: 0, filter: "blur(10px)" }}
+                  whileInView={{ opacity: 1, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, filter: "blur(10px)" }}
                   transition={{
                     duration: 0.4,
                     delay: typeof index === "number" ? index * 0.01 : 0,

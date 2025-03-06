@@ -3,22 +3,27 @@ import scrollHandler from "@utils/scrollHandler";
 import useMushaf from "./useMushaf";
 import Loading from "@components/feedback/Loading";
 import CheckDataToRender from "@components/common/CheckDataToRender";
-import {motion} from "motion/react"
+import { motion } from "motion/react";
 const QuranViewer = () => {
   const { data, changePage, page, isLoading, isError, error } = useMushaf();
   return (
     <section id="mushaf">
       <div className="container pt-10 px-4">
         <Mushaf page={page} changePage={changePage} />
-        <Loading isLoading={isLoading} isError={isError} error={error?.message} type="mushaf">
+        <Loading
+          isLoading={isLoading}
+          isError={isError}
+          error={error?.message}
+          type="mushaf"
+        >
           <div className="grid gridList mt-4">
             <CheckDataToRender
               data={data}
               renderItem={(surah, index) => (
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
+                  initial={{ opacity: 0, filter: "blur(10px)" }}
+                  whileInView={{ opacity: 1, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, filter: "blur(10px)" }}
                   transition={{
                     duration: 0.4,
                     delay: typeof index === "number" ? index * 0.01 : 0,
