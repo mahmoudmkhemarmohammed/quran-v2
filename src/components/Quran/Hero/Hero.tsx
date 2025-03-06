@@ -7,8 +7,8 @@ const Hero = () => {
   return (
     <div className="hero relative flex justify-center items-center flex-col gap-8 px-2.5">
       <motion.h1
-        initial={{ opacity: 0, filter: "blur(10px)"}}
-        whileInView={{ opacity: 1, filter: "blur(0px)"}}
+        initial={{ opacity: 0, filter: "blur(10px)" }}
+        whileInView={{ opacity: 1, filter: "blur(0px)" }}
         exit={{ opacity: 0, filter: "blur(10px)" }}
         viewport={{ once: true }}
         transition={{
@@ -20,8 +20,8 @@ const Hero = () => {
         قرآنك
       </motion.h1>
       <motion.img
-        initial={{ opacity: 0, filter: "blur(10px)"}}
-        whileInView={{ opacity: 1, filter: "blur(0px)"}}
+        initial={{ opacity: 0, filter: "blur(10px)" }}
+        whileInView={{ opacity: 1, filter: "blur(0px)" }}
         exit={{ opacity: 0, filter: "blur(10px)" }}
         viewport={{ once: true }}
         transition={{
@@ -31,10 +31,11 @@ const Hero = () => {
         src={img}
         alt="iqraa"
         className="max-sm:w-[90%]"
+        loading="eager"
       />
       <motion.h2
-        initial={{ opacity: 0, filter: "blur(10px)"}}
-        whileInView={{ opacity: 1, filter: "blur(0px)"}}
+        initial={{ opacity: 0, filter: "blur(10px)" }}
+        whileInView={{ opacity: 1, filter: "blur(0px)" }}
         exit={{ opacity: 0, filter: "blur(10px)" }}
         viewport={{ once: true }}
         transition={{

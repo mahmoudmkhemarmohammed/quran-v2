@@ -14,11 +14,12 @@ const Mushaf = ({
             key={page}
             src={`${import.meta.env.VITE_IMG_URL}${page}.jpg`}
             alt={`Quran Page ${page}`}
-            className="w-full h-auto"
+            className="w-full min-h-[700px] max-lg:min-h-[450px]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
+            loading="eager"
           />
         </AnimatePresence>
       </div>

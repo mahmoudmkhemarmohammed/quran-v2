@@ -10,6 +10,7 @@ import {
   REHYDRATE,
 } from "redux-persist";
 import wishlist from "./wishlist/wishlistSlice";
+import toasts from "./toasts/toastsSlice"
 import storage from "redux-persist/lib/storage";
 
 const wishlistConfig = {
@@ -19,6 +20,7 @@ const wishlistConfig = {
 
 const rootReducer = {
   wishlist: persistReducer(wishlistConfig, wishlist),
+  toasts
 };
 export const store = configureStore({
   reducer: rootReducer,
