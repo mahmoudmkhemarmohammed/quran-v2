@@ -7,41 +7,41 @@ const Hero = () => {
   return (
     <div className="hero relative flex justify-center items-center flex-col gap-8 px-2.5">
       <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 0, filter: "blur(10px)"}}
+        whileInView={{ opacity: 1, filter: "blur(0px)"}}
+        exit={{ opacity: 0, filter: "blur(10px)" }}
         viewport={{ once: true }}
         transition={{
-          duration: 0.4,
-          delay: 1 * 0.1,
+          duration: 0.2,
+          delay: 1 * 0.05,
         }}
-        className="text-8xl font-bold animate-pulse"
+        className="text-8xl font-bold animate-pulse max-sm:text-7xl"
       >
         قرآنك
       </motion.h1>
       <motion.img
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 0, filter: "blur(10px)"}}
+        whileInView={{ opacity: 1, filter: "blur(0px)"}}
+        exit={{ opacity: 0, filter: "blur(10px)" }}
         viewport={{ once: true }}
         transition={{
-          duration: 0.4,
-          delay: 2 * 0.1,
+          duration: 0.2,
+          delay: 2 * 0.05,
         }}
         src={img}
         alt="iqraa"
         className="max-sm:w-[90%]"
       />
       <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 0, filter: "blur(10px)"}}
+        whileInView={{ opacity: 1, filter: "blur(0px)"}}
+        exit={{ opacity: 0, filter: "blur(10px)" }}
         viewport={{ once: true }}
         transition={{
-          duration: 0.4,
-          delay: 3 * 0.1,
+          duration: 0.2,
+          delay: 3 * 0.05,
         }}
-        className="text-3xl font-bold"
+        className="text-3xl font-bold max-sm:text-2xl"
       >
         قراءة{" "}
         <Link to={"/mushaf"} className="text-[#0ef]">
