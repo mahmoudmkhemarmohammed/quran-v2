@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Rakkas&display=swap");
+@import "tailwindcss";
+
+@layer base {
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    user-select: none;
+  }
+
+  body {
+    font-family: "Amiri", serif;
+    background: #0d4b48;
+    color: #fff;
+  }
+
+  .container {
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+}
+
+@layer theme {
+  .heightLayout {
+    min-height: calc(100vh - 84px);
+  }
+  .hero {
+    height: calc(100vh - 84px);
+    background-image: linear-gradient(#4b0d45, #0d4b48ad),
+      url("../assets/images/Free-Quran-Background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .gridList {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .gridMushafs {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+}
