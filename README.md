@@ -14,7 +14,7 @@ The **Quran Website** is a comprehensive platform that allows users to **listen,
 
 ## 🚀 **Live Demo**
 📌 You can check out the project live at:  
-🔗 **[Live Demo](https://quranak.netlify.app)**  
+🔗 **[Live Demo](https://nour-alquran.netlify.app)**  
 
 ---
 

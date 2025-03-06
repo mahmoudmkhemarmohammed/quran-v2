@@ -1,26 +1,16 @@
 import { Link } from "react-router-dom";
-import { motion } from "motion/react";
-import { forwardRef } from "react";
 import scrollHandler from "@utils/scrollHandler";
-
-const MotionLink = motion.create(
-  forwardRef<HTMLAnchorElement, React.ComponentProps<typeof Link>>(
-    (props, ref) => <Link ref={ref} {...props} />
-  )
-);
 
 const LinkItems = ({
   children,
   display,
   onClick,
   to,
-  delay,
 }: {
   children: React.ReactNode;
   display?: string;
   onClick?: () => void;
   to: string;
-  delay: number;
 }) => {
   const clickHandler = () => {
     scrollHandler("explore");
@@ -30,14 +20,7 @@ const LinkItems = ({
   };
 
   return (
-    <MotionLink
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{
-        duration: 0.4,
-        delay: delay * 0.07,
-      }}
+    <Link
       onClick={clickHandler}
       className={`${
         display ? display : "flex"
@@ -45,7 +28,7 @@ const LinkItems = ({
       to={to}
     >
       {children}
-    </MotionLink>
+    </Link>
   );
 };
 

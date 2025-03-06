@@ -19,33 +19,28 @@ const Sidebar = () => {
       }`}
     >
       <div className="flex flex-col flex-wrap max-sm:justify-evenly h-full gap-2.5 max-sm:flex-row max-sm:h-fit">
-        <LinkItems to="/" delay={1}>
+        <LinkItems to="/">
           الرئيسة <IoIosHome />
         </LinkItems>
-        <LinkItems to="/wishlist" delay={2}>
+        <LinkItems to="/wishlist">
           المفضلة <MdFavorite className="hover:text-[#ff004c]" />
         </LinkItems>
-        <LinkItems to="/live" delay={3}>
+        <LinkItems to="/live">
           البث المباشر <MdLiveTv />
         </LinkItems>
-        <LinkItems
-          to="/"
-          delay={4}
-          onClick={extendHeight}
-          display="hidden max-sm:flex"
-        >
+        <LinkItems to="/" onClick={extendHeight} display="hidden max-sm:flex">
           المزيد <CgMoreO />
         </LinkItems>
-        <LinkItems to="/mushaf" delay={5}>
+        <LinkItems to="/mushaf">
           تصفح القرأن <FaWpexplorer />
         </LinkItems>
-        <LinkItems to="/nafahat" delay={6}>
+        <LinkItems to="/nafahat">
           نفحات إيمانية <RiFolderVideoFill />
         </LinkItems>
-        <LinkItems to="/tafsir" delay={7}>
+        <LinkItems to="/tafsir">
           تفسير القرأن <FaWpexplorer />
         </LinkItems>
-        <LinkItems to="/radios" delay={8}>
+        <LinkItems to="/radios">
           الإذاعة <FaRadio />
         </LinkItems>
       </div>
