@@ -1,9 +1,14 @@
 import { motion, AnimatePresence } from "framer-motion";
+import { PiSpinner } from "react-icons/pi";
 const Mushaf = ({
   page,
   changePage,
+  isLoadedData,
+  setIsLoadedData,
 }: {
   page: number;
+  isLoadedData: boolean;
+  setIsLoadedData: (status: boolean) => void;
   changePage: (num: number) => void;
 }) => {
   return (
@@ -20,8 +25,14 @@ const Mushaf = ({
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
             loading="eager"
+            onLoad={() => setIsLoadedData(true)}
           />
         </AnimatePresence>
+        {!isLoadedData && (
+          <div className="absolute left-0 top-0 w-full h-full bg-[#053130] flex justify-center items-center">
+            <PiSpinner size={45} className="animate-spin" />
+          </div>
+        )}
       </div>
 
       <div className="flex gap-4 mt-6">

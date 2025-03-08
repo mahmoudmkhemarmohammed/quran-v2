@@ -19,11 +19,15 @@ const MushafsReciter = () => {
     suError,
     suIsError,
     suIsLoading,
+    isLoadedData,
+    setIsLoadedData,
   } = useMushafsReciter();
 
   return (
     <section>
       <Mushafs
+        setIsLoadedData={setIsLoadedData}
+        isLoadedData={isLoadedData}
         data={data}
         isError={isError}
         isLoading={isLoading}
@@ -36,6 +40,7 @@ const MushafsReciter = () => {
       />
       <div className="container pt-2.5">
         <GridList
+          isLoadedData={isLoadedData}
           surahNum={surahNum}
           data={suwar as TSuwar}
           isLoading={suIsLoading}

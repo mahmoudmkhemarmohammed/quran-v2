@@ -6,6 +6,7 @@ import {
   FaVolumeMute,
   FaExpand,
 } from "react-icons/fa";
+import { PiSpinner } from "react-icons/pi";
 import useVideoPlayer from "./useVideoPlayer";
 interface VideoPlayerProps {
   streamUrl?: string;
@@ -24,6 +25,8 @@ const VideoPlayer = ({ streamUrl, className, title }: VideoPlayerProps) => {
     volume,
     handleVolumeChange,
     handleFullScreen,
+    isLoadedData,
+    setIsLoadedData,
   } = useVideoPlayer(streamUrl);
 
   return (
@@ -32,6 +35,11 @@ const VideoPlayer = ({ streamUrl, className, title }: VideoPlayerProps) => {
         className ? className : "w-[72%]"
       } max-xl:w-full mx-auto overflow-hidden rounded-2xl shadow-lg bg-black/50`}
     >
+      {!isLoadedData && streamUrl && (
+        <div className=" absolute bg-black z-40 w-full h-full flex justify-center items-center">
+          <PiSpinner size={45} className="animate-spin" />
+        </div>
+      )}
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-black/50 text-white">
           {title ? title : "اختر قناة"}
@@ -41,6 +49,7 @@ const VideoPlayer = ({ streamUrl, className, title }: VideoPlayerProps) => {
         ref={videoRef}
         className="w-full h-auto"
         onClick={togglePlay}
+        onLoadedData={() => setIsLoadedData(true)}
       ></video>
 
       <motion.div

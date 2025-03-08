@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useFetchRadio from "@hooks/useFetchRadio";
 
 const useRadio = () => {
@@ -6,6 +6,11 @@ const useRadio = () => {
   const [tafsirSrc, setTafsirSrc] = useState("");
   const [surahName, setSurahName] = useState("");
   const [surahNum, setSurahNum] = useState<number | null>(null);
+  const [isLoadedData,setIsLoadedData] = useState(false);
+
+  useEffect(() => {
+    setIsLoadedData(false)
+  },[surahNum])
 
   return {
     data,
@@ -18,6 +23,8 @@ const useRadio = () => {
     surahNum,
     setSurahName,
     setSurahNum,
+    isLoadedData,
+    setIsLoadedData
   };
 };
 

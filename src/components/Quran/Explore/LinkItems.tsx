@@ -24,7 +24,7 @@ const LinkItems = ({
       onClick={clickHandler}
       className={`${
         display ? display : "flex"
-      } justify-between items-center max-sm:flex-col-reverse gap-2 p-3.5 max-sm:p-1.5 text-2xl bg-[#16706b] hover:bg-[#479390] rounded-xl max-sm:text-[15px] max-sm:bg-transparent max-sm:w-[20%] max-sm:text-center`}
+      } justify-between items-center max-sm:flex-col-reverse gap-2 p-3.5 max-sm:p-1.5 text-2xl bg-[#16706b] hover:bg-[#479390] rounded-xl max-sm:text-[15px] max-sm:bg-transparent max-sm:w-[23%] max-sm:text-center`}
       to={to}
     >
       {children}

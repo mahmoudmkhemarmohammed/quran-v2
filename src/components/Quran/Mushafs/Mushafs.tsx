@@ -15,6 +15,8 @@ type TMushafsProps = {
   surahName: TSurah | undefined;
   setMushaf: (idx: number) => void;
   surahNum: number | null;
+  setIsLoadedData: (status: boolean) => void 
+  isLoadedData: boolean
 };
 
 const Mushafs = ({
@@ -27,6 +29,8 @@ const Mushafs = ({
   mushaf,
   surahName,
   surahNum,
+  setIsLoadedData,
+  isLoadedData
 }: TMushafsProps) => {
 
   return (
@@ -59,6 +63,8 @@ const Mushafs = ({
           </div>
           <div className="w-[30%] max-lg:w-0">
             <AudioPlayer
+            isLoadedData={isLoadedData}
+            setIsLoadedData={setIsLoadedData}
               surahNum={surahNum}
               src={selectedSurah}
               albumCover={img}

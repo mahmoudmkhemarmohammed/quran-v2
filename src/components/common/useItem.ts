@@ -5,6 +5,7 @@ import {
   addSurahToWishlistToggle,
 } from "@store/wishlist/wishlistSlice";
 import { addToast } from "@store/toasts/toastsSlice";
+import { useLocation } from "react-router-dom";
 
 const useItem = (
   setSurah?: (id: number) => void,
@@ -15,6 +16,7 @@ const useItem = (
     (state) => state.wishlist
   );
   const [isLoading, setIsLoading] = useState(false);
+  const {pathname} = useLocation()
 
   const wishlistHandler = (id: number, type: string) => {
     setIsLoading(true);
@@ -31,7 +33,7 @@ const useItem = (
               : "تم إضافة القارئ الي المفضلة",
           })
         );
-      }, 2000);
+      }, 1000);
     } else {
       setTimeout(() => {
         setIsLoading(false);
@@ -45,7 +47,7 @@ const useItem = (
               : "تم إضافة السورة الي المفضلة",
           })
         );
-      }, 2000);
+      }, 1000);
     }
   };
 
@@ -61,7 +63,7 @@ const useItem = (
     }
   };
 
-  return { isLoading, wishlistHandler, handelSetTafsir, handelSetSurah };
+  return { isLoading, wishlistHandler, handelSetTafsir, handelSetSurah , pathname};
 };
 
 export default useItem;

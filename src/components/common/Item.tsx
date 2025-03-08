@@ -1,10 +1,10 @@
-import { GiLoveSong } from "react-icons/gi";
 import { MdFavorite } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { SiSpinrilla } from "react-icons/si";
 import { FaCloudDownloadAlt } from "react-icons/fa";
 import useItem from "./useItem";
 import { motion } from "motion/react";
+import AudioVisualizer from "@components/Quran/Mushafs/AudioVisualizer";
 
 type TItemProps = {
   data: {
@@ -22,6 +22,7 @@ type TItemProps = {
   isTafsir?: boolean;
   setTafsirSrc?: (src: string) => void;
   setSurahName?: (name: string) => void;
+  isLoadedData?: boolean;
 };
 
 const Item = ({
@@ -35,9 +36,15 @@ const Item = ({
   isTafsir,
   setTafsirSrc,
   setSurahName,
+  isLoadedData,
 }: TItemProps) => {
-  const { isLoading, wishlistHandler, handelSetTafsir, handelSetSurah } =
-    useItem(setSurah, setTafsirSrc);
+  const {
+    isLoading,
+    wishlistHandler,
+    handelSetTafsir,
+    handelSetSurah,
+    pathname,
+  } = useItem(setSurah, setTafsirSrc);
   return (
     <>
       {type === "reciter" ? (
@@ -60,6 +67,9 @@ const Item = ({
           >
             {data.name}
           </Link>
+          {surahNum && surahNum == data.id && isLoadedData && (
+            <AudioVisualizer />
+          )}
           {isLoading ? (
             <SiSpinrilla size={25} className="animate-spin" />
           ) : (
@@ -96,10 +106,14 @@ const Item = ({
             surahNum && surahNum == data.id
               ? "bg-linear-to-r from-[#16861c] to-[#5ca30c] hover:bg-linear-to-r hover:from-[#e9a907]"
               : "bg-linear-to-r from-[#115a56] to-[#156d69] hover:bg-linear-to-r hover:from-[#479390]"
-          } shadow-lg p-3 text-xl text-center rounded cursor-pointer flex justify-between items-center`}
+          } shadow-lg p-3 text-xl text-center rounded cursor-pointer flex justify-between items-center ${
+            pathname == "/tafsir" || pathname == "/radios" ? "flex-wrap" : ""
+          }`}
         >
           <h2 className={`${downloadBtn ? "w-1/3" : ""}`}>{data.name}</h2>
-          {surahNum && surahNum == data.id && <GiLoveSong size={25} />}
+          {surahNum && surahNum == data.id && isLoadedData && (
+            <AudioVisualizer />
+          )}
           {!isTafsir && isLoading ? (
             <SiSpinrilla size={25} className="animate-spin" />
           ) : (

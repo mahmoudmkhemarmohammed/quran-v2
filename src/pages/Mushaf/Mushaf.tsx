@@ -5,11 +5,11 @@ import Loading from "@components/feedback/Loading";
 import CheckDataToRender from "@components/common/CheckDataToRender";
 import { motion } from "motion/react";
 const QuranViewer = () => {
-  const { data, changePage, page, isLoading, isError, error } = useMushaf();
+  const { data, changePage, page, isLoading, isError, error , isLoadedData , setIsLoadedData} = useMushaf();
   return (
     <section id="mushaf">
       <div className="container pt-10 px-4">
-        <Mushaf page={page} changePage={changePage} />
+        <Mushaf page={page} changePage={changePage} isLoadedData={isLoadedData} setIsLoadedData={setIsLoadedData}/>
         <Loading
           isLoading={isLoading}
           isError={isError}

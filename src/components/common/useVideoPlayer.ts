@@ -6,12 +6,14 @@ const useVideoPlayer = (streamUrl?: string) => {
   const [isMuted, setIsMuted] = useState<boolean>(false);
   const [volume, setVolume] = useState<number>(1);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoadedData, setIsLoadedData] = useState(false);
 
   useEffect(() => {
     if (!streamUrl || !videoRef.current) return;
 
     setIsLoading(true);
     setIsPlaying(false); // Reset play state when URL changes
+    setIsLoadedData(false); // Reset Spinner When The URL changes And Data Unloaded
 
     if (streamUrl.endsWith(".m3u8")) {
       if (Hls.isSupported()) {
@@ -76,6 +78,8 @@ const useVideoPlayer = (streamUrl?: string) => {
     volume,
     handleVolumeChange,
     handleFullScreen,
+    isLoadedData,
+    setIsLoadedData,
   };
 };
 

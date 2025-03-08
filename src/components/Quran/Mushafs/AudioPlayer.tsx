@@ -11,6 +11,7 @@ import scrollHandler from "@utils/scrollHandler";
 import { SiSpinrilla } from "react-icons/si";
 import useAudioPlayer from "./useAudioPlayer";
 import { motion } from "motion/react";
+import { PiSpinnerBold } from "react-icons/pi";
 interface AudioPlayerProps {
   src?: string;
   title: string | undefined;
@@ -18,6 +19,8 @@ interface AudioPlayerProps {
   albumCover?: string;
   surahNum: number | null;
   showHeart?: boolean;
+  setIsLoadedData: (status: boolean) => void;
+  isLoadedData: boolean;
 }
 
 const AudioPlayer: React.FC<AudioPlayerProps> = ({
@@ -27,6 +30,8 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
   albumCover = "https://via.placeholder.com/150",
   showHeart = true,
   surahNum,
+  setIsLoadedData,
+  isLoadedData,
 }) => {
   const {
     decreaseProgress,
@@ -108,10 +113,16 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
           disabled={isDisabled}
           className="p-5 bg-blue-600 rounded-full hover:bg-blue-500 transition-all duration-300 shadow-lg text-white cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {isPlaying ? (
-            <FaPause className="text-xl max-lg:text-xs" />
+          {!isLoadedData && src ? (
+            <PiSpinnerBold className="animate-spin text-xl max-lg:text-[15px] font-bold" />
           ) : (
-            <FaPlay className="text-xl max-lg:text-xs" />
+            <>
+              {isPlaying ? (
+                <FaPause className="text-xl max-lg:text-[15px]" />
+              ) : (
+                <FaPlay className="text-xl max-lg:text-[15px]" />
+              )}
+            </>
           )}
         </button>
         <button
@@ -160,6 +171,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({
           src={src}
           onTimeUpdate={handleTimeUpdate}
           autoPlay
+          onCanPlayThrough={() => setIsLoadedData(true)}
         />
       )}
     </motion.div>

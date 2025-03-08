@@ -18,7 +18,7 @@ const Sidebar = () => {
         height ? "max-sm:h-fit" : "max-sm:h-[70px]"
       }`}
     >
-      <div className="flex flex-col flex-wrap max-sm:justify-evenly h-full gap-2.5 max-sm:flex-row max-sm:h-fit">
+      <div className="flex flex-col flex-wrap max-sm:justify-between h-full gap-1.5 max-sm:flex-row max-sm:h-fit">
         <LinkItems to="/">
           الرئيسة <IoIosHome />
         </LinkItems>

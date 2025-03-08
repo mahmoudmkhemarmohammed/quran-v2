@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useFetchMushafsReciter from "../../hooks/useFetchMushafsReciter";
 import useFetchSuwar from "../../hooks/useFetchSuwar";
@@ -11,6 +11,13 @@ const useMushafsReciter = () => {
   const [surahNum, setSurahNum] = useState<number | null>(null);
   const { data, isError, isLoading, error } = useFetchMushafsReciter(id);
   const { itemsSurah } = useAppSelector((state) => state.wishlist);
+  const [isLoadedData, setIsLoadedData] = useState(false);
+
+  useEffect(() => {
+    setIsLoadedData(false);
+  }, [mushaf, surahNum]);
+
+  
   const {
     data: dataSuwar,
     isLoading: suIsLoading,
@@ -47,7 +54,6 @@ const useMushafsReciter = () => {
     };
   });
 
-
   const surahName =
     surahNum !== null ? dataSuwar?.find((su) => +su.id == surahNum) : undefined;
 
@@ -66,7 +72,9 @@ const useMushafsReciter = () => {
     downloadSurah,
     suError,
     suIsError,
-    suIsLoading
+    suIsLoading,
+    isLoadedData,
+    setIsLoadedData,
   };
 };
 

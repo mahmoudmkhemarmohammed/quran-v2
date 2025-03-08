@@ -15,12 +15,16 @@ const Radio = () => {
     surahNum,
     setSurahName,
     setSurahNum,
+    isLoadedData,
+    setIsLoadedData,
   } = useRadio();
   return (
     <section>
       <div className="container">
         <SpecialHeading title="الإذاعة" className="text-center" />
         <AudioPlayer
+          isLoadedData={isLoadedData}
+          setIsLoadedData={setIsLoadedData}
           src={tafsirSrc}
           albumCover={img}
           reciter={"الاذاعة"}
@@ -30,6 +34,7 @@ const Radio = () => {
         />
         <div className="mt-2.5">
           <GridList
+            isLoadedData={isLoadedData}
             data={data}
             isLoading={isLoading}
             isError={isError}
