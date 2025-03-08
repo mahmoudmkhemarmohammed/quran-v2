@@ -7,6 +7,7 @@ import { MdFavorite } from "react-icons/md";
 import { FaWpexplorer } from "react-icons/fa";
 import { FaRadio } from "react-icons/fa6";
 import LinkItems from "./LinkItems";
+import img from "@assets/images/Free-Quran-Background.jpg"
 const Sidebar = () => {
   const [height, setHeight] = useState(false);
   const extendHeight = () => {
@@ -43,6 +44,7 @@ const Sidebar = () => {
         <LinkItems to="/radios">
           الإذاعة <FaRadio />
         </LinkItems>
+        <img src={img} alt="quran-background" loading="eager" className="rounded-md grow max-sm:hidden"/>
       </div>
     </div>
   );

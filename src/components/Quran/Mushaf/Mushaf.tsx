@@ -1,32 +1,54 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { PiSpinner } from "react-icons/pi";
+import "react-inner-image-zoom/lib/InnerImageZoom/styles.min.css";
+import InnerImageZoom from "react-inner-image-zoom";
 const Mushaf = ({
   page,
   changePage,
   isLoadedData,
   setIsLoadedData,
+  handleTouchStart,
+  handleTouchEnd,
+  setIsZooming,
 }: {
   page: number;
   isLoadedData: boolean;
   setIsLoadedData: (status: boolean) => void;
   changePage: (num: number) => void;
+  handleTouchStart: (e: React.TouchEvent<HTMLDivElement>) => void;
+  handleTouchEnd: (e: React.TouchEvent<HTMLDivElement>) => void;
+  setIsZooming: (status: boolean) => void;
 }) => {
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="relative max-sm:w-full md:w-[500px] rounded-lg shadow-lg overflow-hidden border border-gray-300">
+      <div
+        style={{ touchAction: "pan-y" }}
+        onTouchEnd={handleTouchEnd}
+        onTouchStart={handleTouchStart}
+        className="relative max-sm:w-full md:w-[500px] rounded-lg shadow-lg overflow-hidden"
+      >
         <AnimatePresence mode="wait">
-          <motion.img
+          <motion.div
             key={page}
-            src={`${import.meta.env.VITE_IMG_URL}${page}.jpg`}
-            alt={`Quran Page ${page}`}
-            className="w-full min-h-[700px] max-lg:min-h-[450px]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
-            loading="eager"
-            onLoad={() => setIsLoadedData(true)}
-          />
+            className="w-full min-h-[700px] max-lg:min-h-[450px]"
+          >
+            <InnerImageZoom
+              src={`${import.meta.env.VITE_IMG_URL}${page}.jpg`}
+              zoomType="hover"
+              afterZoomIn={() => setIsZooming(true)}
+              afterZoomOut={() => setIsZooming(false)}
+              imgAttributes={{
+                alt: `Quran Page ${page}`,
+                onLoad: () => setIsLoadedData(true),
+                loading: "eager",
+                className: "w-full h-full",
+              }}
+            />
+          </motion.div>
         </AnimatePresence>
         {!isLoadedData && (
           <div className="absolute left-0 top-0 w-full h-full bg-[#053130] flex justify-center items-center">
@@ -47,7 +69,7 @@ const Mushaf = ({
         </motion.button>
 
         <span className="text-lg font-semibold text-white">
-          صفحة {page - 1} من 607
+          صفحة {page == 0 ? 0 : page - 1} من 607
         </span>
 
         <motion.button

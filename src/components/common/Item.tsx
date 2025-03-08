@@ -114,16 +114,20 @@ const Item = ({
           {surahNum && surahNum == data.id && isLoadedData && (
             <AudioVisualizer />
           )}
-          {!isTafsir && isLoading ? (
+          {isLoading ? (
             <SiSpinrilla size={25} className="animate-spin" />
           ) : (
-            <MdFavorite
-              className={`${
-                data.isLiked ? `text-[#ff004c]` : `hover:text-[#ff004c]`
-              } ${downloadBtn ? "w-1/3" : ""}`}
-              size={25}
-              onClick={() => wishlistHandler(data.id, "surah")}
-            />
+            <>
+              {!isTafsir && (
+                <MdFavorite
+                  className={`${
+                    data.isLiked ? `text-[#ff004c]` : `hover:text-[#ff004c]`
+                  } ${downloadBtn ? "w-1/3" : ""}`}
+                  size={25}
+                  onClick={() => wishlistHandler(data.id, "surah")}
+                />
+              )}
+            </>
           )}
           {downloadBtn && (
             <a

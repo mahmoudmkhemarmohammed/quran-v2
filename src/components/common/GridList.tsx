@@ -23,7 +23,7 @@ type TGridListProps = {
   setSurahName?: (name: string) => void;
   itemsNumber?: number;
   type: keyof typeof skeletons;
-  isLoadedData?: boolean
+  isLoadedData?: boolean;
 };
 
 const GridList = ({
@@ -75,7 +75,7 @@ const GridList = ({
             data={records}
             renderItem={(data, index) => (
               <Item
-              isLoadedData={isLoadedData}
+                isLoadedData={isLoadedData}
                 key={data.id}
                 surahNum={surahNum}
                 data={data}

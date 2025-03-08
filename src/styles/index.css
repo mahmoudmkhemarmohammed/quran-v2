@@ -31,6 +31,7 @@
       url("../assets/images/Free-Quran-Background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: top;
   }
   .gridList {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));

@@ -5,11 +5,31 @@ import Loading from "@components/feedback/Loading";
 import CheckDataToRender from "@components/common/CheckDataToRender";
 import { motion } from "motion/react";
 const QuranViewer = () => {
-  const { data, changePage, page, isLoading, isError, error , isLoadedData , setIsLoadedData} = useMushaf();
+  const {
+    data,
+    changePage,
+    page,
+    isLoading,
+    isError,
+    error,
+    isLoadedData,
+    setIsLoadedData,
+    handleTouchEnd,
+    handleTouchStart,
+    setIsZooming
+  } = useMushaf();
   return (
     <section id="mushaf">
       <div className="container pt-10 px-4">
-        <Mushaf page={page} changePage={changePage} isLoadedData={isLoadedData} setIsLoadedData={setIsLoadedData}/>
+        <Mushaf
+        setIsZooming={setIsZooming}
+          page={page}
+          changePage={changePage}
+          isLoadedData={isLoadedData}
+          setIsLoadedData={setIsLoadedData}
+          handleTouchEnd={handleTouchEnd}
+          handleTouchStart={handleTouchStart}
+        />
         <Loading
           isLoading={isLoading}
           isError={isError}
@@ -35,7 +55,8 @@ const QuranViewer = () => {
                     scrollHandler("mushaf");
                   }}
                   className={`${
-                    page - 1 == surah.start_page
+                    page - 1 == surah.start_page ||
+                    (page - 1 >= surah.start_page && page - 1 <= surah.end_page)
                       ? "bg-linear-to-r from-[#16861c] to-[#5ca30c] hover:bg-linear-to-r hover:from-[#e9a907]"
                       : "bg-linear-to-r from-[#115a56] to-[#156d69] hover:bg-linear-to-r hover:from-[#479390]"
                   } hover:bg-linear-to-r hover:from-[#479390] p-5 cursor-pointer rounded-md`}
