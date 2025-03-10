@@ -3,14 +3,12 @@ import useFetchSuwar from "@hooks/useFetchSuwar";
 
 const useMushaf = () => {
   const [page, setPage] = useState(1);
-  const [isLoadedData, setIsLoadedData] = useState(false);
+  const [isLoadedData, setIsLoadedData] = useState(true);
   const [isSwiping, setIsSwiping] = useState(false);
-  const [isZooming,setIsZooming] = useState(false)
+  const [isZooming, setIsZooming] = useState(false);
   const touchStartX = useRef<number>(0);
   const totalQuranPage = 607;
-  console.log(page);
   
-
   useEffect(() => {
     setIsLoadedData(false);
   }, [page]);
@@ -33,14 +31,11 @@ const useMushaf = () => {
     if (difference > 50) {
       setPage((prev) => Math.max(prev - 1, 1));
       setIsSwiping(true);
-
     } else if (difference < -50) {
-
       setPage((prev) => Math.min(prev + 1, totalQuranPage - 1));
       setIsSwiping(true);
     }
   };
-
 
   const { data, isLoading, isError, error } = useFetchSuwar();
   return {
@@ -54,7 +49,7 @@ const useMushaf = () => {
     setIsLoadedData,
     handleTouchEnd,
     handleTouchStart,
-    setIsZooming
+    setIsZooming,
   };
 };
 
