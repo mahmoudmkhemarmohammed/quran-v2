@@ -1,6 +1,6 @@
 import { FaReact } from "react-icons/fa";
 import { RiTailwindCssFill } from "react-icons/ri";
-import { SiRedux } from "react-icons/si";
+import { SiReactquery, SiRedux } from "react-icons/si";
 import { GrStorage } from "react-icons/gr";
 import { SiAxios } from "react-icons/si";
 import { TbBrandFramerMotion } from "react-icons/tb";
@@ -38,6 +38,11 @@ const AboutUs = () => {
         </div>
 
         <div>
+          <SiReactquery className="text-5xl text-[#ff0055]" />
+          <h3>React Query</h3>
+        </div>
+
+        <div>
           <SiRedux className="text-5xl text-[#00aaff]" />
           <h3>Redux Toolkit</h3>
         </div>
@@ -59,8 +64,9 @@ const AboutUs = () => {
       </div>
       <SpecialHeading title="هام" />
       <h2 className="text-xl leading-loose pl-2">
-        يعد موقع قرأنك صدقهة جارية علي روح اخي احمد مخيمر فأرجوا ان تدعوا له بالرحمه
-        والمغفره والان استمتع بتصفح الموقع وسماع القرأن بصوت الشيخ المفضل لديك
+        يعد موقع قرأنك صدقهة جارية علي روح اخي احمد مخيمر فأرجوا ان تدعوا له
+        بالرحمه والمغفره والان استمتع بتصفح الموقع وسماع القرأن بصوت الشيخ
+        المفضل لديك
       </h2>
     </div>
   );
